@@ -1,16 +1,22 @@
 import pyodbc
 import pandas as pd
-def sql_conn(database, query, server="essexbi"):
-    '''
-    Usage: Read data from a sql server as a pandas dataframe by establishing a trusted pyodbc connection
-    Parameters: - str Database: name of the database for the table specified in the query
-                - str Query: The full SQL query for the data encased in triple double-quotations (ex: """ SELECT * 
-                                                                                                        FROM table """)
-                - str Server: name of the server for the database specified; by default essexbi
-    Return:     - pd.Dataframe queryDf: the queried data 
-    '''
 
-    
+def sql_conn(database, query, server="essexbi"):
+    """Usage: Read data from a sql server as a pandas dataframe by establishing a trusted pyodbc connection
+
+    Args:
+        database (str):
+            Name of the database for the table specified in the query
+        query (str):
+            The full SQL query for the data encased in triple double-quotations
+        server (str):  (Default value = "essexbi")
+            name of the server for the database specified; by default essexbi
+
+    Returns: 
+        df_query (pd.DataFrame):
+            The queried data
+    """
+   
     sqlconn = pyodbc.connect(
         driver='SQL Server',
         host=server,
